@@ -55,7 +55,6 @@ scale = Vector2(0.9599986, 1)
 script = ExtResource("1_q3lat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245905168]
-top_level = true
 position = Vector2(5.9999995, 1.9999999)
 scale = Vector2(1.8290159, 1.8529676)
 shape = SubResource("CircleShape2D_2xwj6")
