@@ -4,9 +4,9 @@ using YourFirstGame.Player;
 
 public partial class HeadPlayer : BasePlayer
 {
-    private HeadState _headState = HeadState.NORMAL;
-    private float _baseScale = 0.03f;
-    
+	private HeadState _headState = HeadState.NORMAL;
+	private float _baseScale = 0.03f;
+	
 	public override void _Ready()
 	{
 		Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -17,7 +17,7 @@ public partial class HeadPlayer : BasePlayer
 	{
 		ApplyGravity(delta);
 		HandleMovement(delta);
-        HandleInput();
+		HandleInput();
 
 		MoveAndSlide();
 	}
@@ -47,11 +47,11 @@ public partial class HeadPlayer : BasePlayer
 
 	private void HandleMovement(double delta)
 	{
-        if (_headState == HeadState.STRETCHED)
-        {
-            return;
-        }
-        
+		if (_headState == HeadState.STRETCHED)
+		{
+			return;
+		}
+		
 		Vector2 direction = Input.GetVector("move_left", "move_right", "look_up", "look_down");
 		float movementDirection = Input.GetAxis("move_left", "move_right");
 
@@ -73,15 +73,15 @@ public partial class HeadPlayer : BasePlayer
 		{
 			Sprite.FlipH = false;
 			movementDirection = 1f;
-            Sprite.Play("roll");
+			Sprite.Play("roll");
 		} else if (movementDirection < 0) {
 			Sprite.FlipH = true;
 			movementDirection = -1f;
-            Sprite.Play("roll");
+			Sprite.Play("roll");
 		} else
 		{
 			movementDirection = 0f;
-            Sprite.Play("idle");
+			Sprite.Play("idle");
 		}
 		
 		if (KnockBackTimer > 0f)
@@ -89,48 +89,48 @@ public partial class HeadPlayer : BasePlayer
 			KnockBackTimer -= (float)delta;
 		} else
 		{	
-            float speedModifier = _headState == HeadState.NORMAL ? 1.0f : 0.5f;
+			float speedModifier = _headState == HeadState.NORMAL ? 1.0f : 0.5f;
 			Velocity = new Vector2(movementDirection * Speed * speedModifier, Velocity.Y);
 		}
 	}
 
-    private void HandleInput()
-    {
-        if (Input.IsActionPressed("look_up"))
-        {
-            Stretch();
-            // Stretch
-        } else if (Input.IsActionPressed("look_down"))
-        {
-            Squish();
-            // Squish
-        }
-        else
-        {
-            Scale = new Vector2(_baseScale, _baseScale);
-            _headState = HeadState.NORMAL;
-        }
-    }
+	private void HandleInput()
+	{
+		if (Input.IsActionPressed("look_up"))
+		{
+			Stretch();
+			// Stretch
+		} else if (Input.IsActionPressed("look_down"))
+		{
+			Squish();
+			// Squish
+		}
+		else
+		{
+			Scale = new Vector2(_baseScale, _baseScale);
+			_headState = HeadState.NORMAL;
+		}
+	}
 
-    private void Squish()
-    {
-        Scale = new Vector2(_baseScale * 1.5f, _baseScale / 2.0f);
-        _headState = HeadState.SQUISHED;
-        // load other character model
-    }
+	private void Squish()
+	{
+		Scale = new Vector2(_baseScale * 1.5f, _baseScale / 2.0f);
+		_headState = HeadState.SQUISHED;
+		// load other character model
+	}
 
-    private void Stretch()
-    {
-        Scale = new Vector2(_baseScale / 2.0f, _baseScale * 1.5f);
-        _headState = HeadState.STRETCHED;
-        Sprite.Play("idle");
-        Velocity = Vector2.Zero;
-    }
+	private void Stretch()
+	{
+		Scale = new Vector2(_baseScale / 2.0f, _baseScale * 1.5f);
+		_headState = HeadState.STRETCHED;
+		Sprite.Play("idle");
+		Velocity = Vector2.Zero;
+	}
 }
 
 public enum HeadState
 {
-    NORMAL,
-    STRETCHED,
-    SQUISHED,
+	NORMAL,
+	STRETCHED,
+	SQUISHED,
 }
