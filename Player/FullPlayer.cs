@@ -36,6 +36,8 @@ public partial class FullPlayer : BasePlayer
 		HandleJump();
 		HandleMovement(delta);
 		HandlePush();
+
+		MoveAndSlide();
 	}
 
 	private void UpdateTimers(double delta)
