@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://mfxgw5kvio1l" path="res://Player/Sprites/Roll/Rolling-4.png" id="8_v5s7x"]
 [ext_resource type="Texture2D" uid="uid://4ntt74lfetw0" path="res://Player/Sprites/Roll/Rolling-5.png" id="9_7q1t1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2xwj6"]
-radius = 50.849876
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ai77n"]
+size = Vector2(84.56291, 93.90342)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2merx"]
 animations = [{
@@ -50,14 +50,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=1110022530]
+[node name="Player2" type="CharacterBody2D" unique_id=1110022530]
 scale = Vector2(0.9599986, 1)
 script = ExtResource("1_q3lat")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245905168]
 position = Vector2(5.9999995, 1.9999999)
 scale = Vector2(1.8290159, 1.8529676)
-shape = SubResource("CircleShape2D_2xwj6")
+shape = SubResource("RectangleShape2D_ai77n")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1834054364]
 position_smoothing_enabled = true
