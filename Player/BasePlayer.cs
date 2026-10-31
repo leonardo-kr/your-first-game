@@ -14,7 +14,7 @@ public abstract partial class BasePlayer : CharacterBody2D
     
     public CollisionShape2D Collision;
     public Vector2 FacingDirection = Vector2.Right;
-    public Sprite2D Sprite;
+    public AnimatedSprite2D Sprite;
 
     public float InvincibilityTimer = 0f;
     public float InvincibilityDuration = 1.5f;
