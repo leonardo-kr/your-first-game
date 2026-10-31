@@ -21,7 +21,6 @@ public partial class FullPlayer : BasePlayer
 	
 	private Area2D _pushingHitbox;
 	private CollisionShape2D _pushingHitboxCollision;
-	private AnimatedSprite2D _animatedSprite2D;
 
 	public override void _Ready()
 	{
@@ -29,7 +28,6 @@ public partial class FullPlayer : BasePlayer
 		Collision = GetNode<CollisionShape2D>("CollisionShape2D");
 		_pushingHitbox = GetNode<Area2D>("PushingHitbox");
 		_pushingHitboxCollision = _pushingHitbox.GetNode<CollisionShape2D>("CollisionShape2D");
-		_animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -99,7 +97,7 @@ public partial class FullPlayer : BasePlayer
 		GD.Print(_pushingHitboxCollision.Scale);
 		if (movementDirection > 0)
 		{
-			_animatedSprite2D.Play("Walk");
+			Sprite.Play("Walk");
 			Sprite.FlipH = false;
 			movementDirection = 1f;
 			if (!_isPushing && _pushingHitbox.Scale.X < 0)
@@ -107,7 +105,7 @@ public partial class FullPlayer : BasePlayer
 				_pushingHitbox.Scale = new Vector2(_pushingHitbox.Scale.X * (-1), _pushingHitbox.Scale.Y);
 			}
 		} else if (movementDirection < 0) {
-			_animatedSprite2D.Play("Walk");
+			Sprite.Play("Walk");
 			Sprite.FlipH = true;
 			movementDirection = -1f;
 			if (!_isPushing && _pushingHitbox.Scale.X > 0)
@@ -116,7 +114,7 @@ public partial class FullPlayer : BasePlayer
 			}
 		} else
 		{
-			_animatedSprite2D.Play("Idle");
+			Sprite.Play("Idle");
 			movementDirection = 0f;
 		}
 		

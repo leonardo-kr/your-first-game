@@ -72,12 +72,15 @@ public partial class HeadPlayer : BasePlayer
 		{
 			Sprite.FlipH = false;
 			movementDirection = 1f;
+            Sprite.Play("roll");
 		} else if (movementDirection < 0) {
 			Sprite.FlipH = true;
 			movementDirection = -1f;
+            Sprite.Play("roll");
 		} else
 		{
 			movementDirection = 0f;
+            Sprite.Play("idle");
 		}
 		
 		if (KnockBackTimer > 0f)
@@ -119,6 +122,8 @@ public partial class HeadPlayer : BasePlayer
     {
         Scale = new Vector2(0.5f, 1.5f);
         _headState = HeadState.STRETCHED;
+        Sprite.Play("idle");
+        Velocity = Vector2.Zero;
     }
 }
 
