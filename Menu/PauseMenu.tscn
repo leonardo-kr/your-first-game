@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cjarcs56nv7uu"]
+
+[ext_resource type="Script" uid="uid://j28tcxn0aebu" path="res://Menu/PauseMenu.cs" id="1_bg18o"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1425273617]
+layer = 10
+script = ExtResource("1_bg18o")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=618478262]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=584800011]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1506995741]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1946333238]
+layout_mode = 2
+text = "MENU_RESUME"
+
+[node name="MainMenuButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=2071198299]
+layout_mode = 2
+text = "MENU_MAIN_MENU"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1185512505]
+layout_mode = 2
+text = "MENU_QUIT"
