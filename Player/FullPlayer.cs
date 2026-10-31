@@ -19,12 +19,14 @@ public partial class FullPlayer : BasePlayer
     private CharacterBody2D _pushable = null;
     
     private Area2D _pushingHitbox;
+    private CollisionShape2D _pushingHitboxCollision;
 
     public override void _Ready()
     {
         Sprite = GetNode<Sprite2D>("Sprite2D");
         Collision = GetNode<CollisionShape2D>("CollisionShape2D");
         _pushingHitbox = GetNode<Area2D>("PushingHitbox");
+        _pushingHitboxCollision = _pushingHitbox.GetNode<CollisionShape2D>("CollisionShape2D");
     }
 	
     public override void _PhysicsProcess(double delta)
@@ -91,13 +93,22 @@ public partial class FullPlayer : BasePlayer
 
         // only needed for controller, but doesnt impact keyboard
         // always move at the same speed, by setting the movement director to 1f 
+        GD.Print(_pushingHitboxCollision.Scale);
         if (movementDirection > 0)
         {
             Sprite.FlipH = false;
             movementDirection = 1f;
+            if (!_isPushing && _pushingHitbox.Scale.X < 0)
+            {
+                _pushingHitbox.Scale = new Vector2(_pushingHitbox.Scale.X * (-1), _pushingHitbox.Scale.Y);
+            }
         } else if (movementDirection < 0) {
             Sprite.FlipH = true;
             movementDirection = -1f;
+            if (!_isPushing && _pushingHitbox.Scale.X > 0)
+            {
+                _pushingHitbox.Scale = new Vector2(_pushingHitbox.Scale.X * (-1), _pushingHitbox.Scale.Y);
+            }
         } else
         {
             movementDirection = 0f;
@@ -147,6 +158,10 @@ public partial class FullPlayer : BasePlayer
         } else
         {
             _isPushing = false;
+            if (_pushable != null)
+            {
+                _pushable.Velocity = Vector2.Zero;
+            }
         }
     }
     
@@ -166,6 +181,7 @@ public partial class FullPlayer : BasePlayer
         CharacterBody2D pushable = area.GetParent<CharacterBody2D>();
         if (pushable != null)
         {
+            _pushable.Velocity = Vector2.Zero;
             _pushable = null;
         }
     }
