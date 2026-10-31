@@ -12,10 +12,10 @@ public partial class PauseMenu : CanvasLayer
 		ProcessMode = ProcessModeEnum.Always;
 		Hide();
 		
-		_resume = GetNode<Button>("CenterContainer/VBoxContainer/ResumeButton");
+		_resume = GetNode<Button>("%ResumeButton");
 		_resume.Pressed += () => SetPaused(false);
-		GetNode<Button>("CenterContainer/VBoxContainer/MainMenuButton").Pressed += OnMainMenuPressed;
-		GetNode<Button>("CenterContainer/VBoxContainer/QuitButton").Pressed += () => GetTree().Quit();
+		GetNode<Button>("%MainMenuButton").Pressed += OnMainMenuPressed;
+		GetNode<Button>("%QuitButton").Pressed += () => GetTree().Quit();
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
