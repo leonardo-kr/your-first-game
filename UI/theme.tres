@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://bwbvgnqw52hs6"]
+
+[ext_resource type="FontFile" uid="uid://d0jo2mjhn0w05" path="res://UI/Fonts/Nunito/Nunito-SemiBold.ttf" id="1_oieh5"]
+[ext_resource type="FontFile" uid="uid://did0ubhwy6hf" path="res://UI/Fonts/ChakraPetch/ChakraPetch-Regular.ttf" id="2_t3rxx"]
+[ext_resource type="FontFile" uid="uid://bw8k7vuphlt6o" path="res://UI/Fonts/Nunito/Nunito-Regular.ttf" id="3_t3rxx"]
+
+[resource]
+default_font = ExtResource("3_t3rxx")
+default_font_size = 28
+Button/fonts/font = ExtResource("1_oieh5")
+TitleLabel/base_type = &"Label"
+TitleLabel/font_sizes/font_size = 64
+TitleLabel/fonts/font = ExtResource("2_t3rxx")
