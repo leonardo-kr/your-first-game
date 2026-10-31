@@ -4,6 +4,8 @@ using YourFirstGame.Player;
 
 public partial class HeadPlayer : BasePlayer
 {
+    private HeadState _headState = HeadState.NORMAL;
+    
 	public override void _Ready()
 	{
 		Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
@@ -14,6 +16,7 @@ public partial class HeadPlayer : BasePlayer
 	{
 		ApplyGravity(delta);
 		HandleMovement(delta);
+        HandleInput();
 
 		MoveAndSlide();
 	}
@@ -43,6 +46,11 @@ public partial class HeadPlayer : BasePlayer
 
 	private void HandleMovement(double delta)
 	{
+        if (_headState == HeadState.STRETCHED)
+        {
+            return;
+        }
+        
 		Vector2 direction = Input.GetVector("move_left", "move_right", "look_up", "look_down");
 		float movementDirection = Input.GetAxis("move_left", "move_right");
 
@@ -77,7 +85,46 @@ public partial class HeadPlayer : BasePlayer
 			KnockBackTimer -= (float)delta;
 		} else
 		{	
-			Velocity = new Vector2(movementDirection * Speed, Velocity.Y);
+            float speedModifier = _headState == HeadState.NORMAL ? 1.0f : 0.5f;
+			Velocity = new Vector2(movementDirection * Speed * speedModifier, Velocity.Y);
 		}
 	}
+
+    private void HandleInput()
+    {
+        if (Input.IsActionPressed("look_up"))
+        {
+            Stretch();
+            // Stretch
+        } else if (Input.IsActionPressed("look_down"))
+        {
+            Squish();
+            // Squish
+        }
+        else
+        {
+            Scale = new Vector2(1.0f, 1.0f);
+            _headState = HeadState.NORMAL;
+        }
+    }
+
+    private void Squish()
+    {
+        Scale = new Vector2(1.5f, 0.5f);
+        _headState = HeadState.SQUISHED;
+        // load other character model
+    }
+
+    private void Stretch()
+    {
+        Scale = new Vector2(0.5f, 1.5f);
+        _headState = HeadState.STRETCHED;
+    }
+}
+
+public enum HeadState
+{
+    NORMAL,
+    STRETCHED,
+    SQUISHED,
 }
