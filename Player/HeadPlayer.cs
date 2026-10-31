@@ -4,24 +4,15 @@ using YourFirstGame.Player;
 
 public partial class HeadPlayer : BasePlayer
 {
-	private float _invincibilityTimer = 0f;
-	private float _invincibilityDuration = 1.5f;
-
-	private float _knockBackTimer = 0f;
-	private float _knockBackDuration = 0.2f;
-	private float _receivedKnockBackStrengthX = 300;
-	private float _receivedKnockBackStrengthY = 500;
-
 	public override void _Ready()
 	{
-		// Hurtbop = GetNode<Area2D>("Hurtbop");
 		Sprite = GetNode<Sprite2D>("Sprite2D");
         Collision = GetNode<CollisionShape2D>("CollisionShape2D");
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		ApplyGravity();
+		ApplyGravity(delta);
 		HandleMovement(delta);
 
 		MoveAndSlide();
@@ -29,10 +20,10 @@ public partial class HeadPlayer : BasePlayer
 
 	private void UpdateTimers(double delta)
 	{
-		_invincibilityTimer = Mathf.Max(_invincibilityTimer - (float) delta, 0.0f);
+		InvincibilityTimer = Mathf.Max(InvincibilityTimer - (float) delta, 0.0f);
 	}
 	
-	private void ApplyGravity()
+	private void ApplyGravity(double delta)
 	{
 		if (IsOnFloor())
 		{
@@ -46,7 +37,7 @@ public partial class HeadPlayer : BasePlayer
 			gravityScale *= FallGravityScale;
 		}
 		
-		Velocity += GetGravity() * gravityScale;
+		Velocity += GetGravity() * gravityScale * (float) delta;
 		Velocity = new Vector2(Velocity.X, Mathf.Min(Velocity.Y, MaxFallSpeed));
 	}
 
@@ -81,9 +72,9 @@ public partial class HeadPlayer : BasePlayer
 			movementDirection = 0f;
 		}
 		
-		if (_knockBackTimer > 0f)
+		if (KnockBackTimer > 0f)
 		{
-			_knockBackTimer -= (float)delta;
+			KnockBackTimer -= (float)delta;
 		} else
 		{	
 			Velocity = new Vector2(movementDirection * Speed, Velocity.Y);
