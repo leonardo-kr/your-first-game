@@ -5,6 +5,39 @@ namespace YourFirstGame.Player;
 
 public partial class FullPlayer : BasePlayer
 {
+<<<<<<< HEAD
+    [Export] public float JumpVelocity = -800.0f;
+    [Export] public float JumpCutMultiplier = 0.4f;
+    [Export] public float CoyoteTime = 0.1f;
+    [Export] public float JumpBufferTime = 0.1f;
+    [Export] public float PushForce = 800.0f;
+    [Export] public float PullForce = -10000.0f;
+    
+    private float _coyoteTimer = 0.0f;
+    private float _jumpBufferTimer = 0.0f;
+    private float _movementDirection = 0.0f;
+    private bool _isPushing = false;
+    private CharacterBody2D _pushable = null;
+    
+    private Area2D _pushingHitbox;
+    private CollisionShape2D _pushingHitboxCollision;
+
+    public override void _Ready()
+    {
+        Sprite = GetNode<Sprite2D>("Sprite2D");
+        Collision = GetNode<CollisionShape2D>("CollisionShape2D");
+        _pushingHitbox = GetNode<Area2D>("PushingHitbox");
+        _pushingHitboxCollision = _pushingHitbox.GetNode<CollisionShape2D>("CollisionShape2D");
+    }
+	
+    public override void _PhysicsProcess(double delta)
+    {
+        UpdateTimers(delta);
+        ApplyGravity(delta);
+        HandleJump();
+        HandleMovement(delta);
+        HandlePush();
+=======
 	[Export] public float JumpVelocity = -800.0f;
 	[Export] public float JumpCutMultiplier = 0.4f;
 	[Export] public float CoyoteTime = 0.1f;
@@ -12,6 +45,7 @@ public partial class FullPlayer : BasePlayer
 	
 	private float _coyoteTimer = 0.0f;
 	private float _jumpBufferTimer = 0.0f;
+>>>>>>> 45c8bf9 (make tiles and physics maps)
 
 	public override void _Ready()
 	{
@@ -62,10 +96,18 @@ public partial class FullPlayer : BasePlayer
 		Velocity = new Vector2(Velocity.X, Mathf.Min(Velocity.Y, MaxFallSpeed));
 	}
 
+<<<<<<< HEAD
+    private void HandleMovement(double delta)
+    {
+        Vector2 direction = Input.GetVector("move_left", "move_right", "look_up", "look_down");
+        float movementDirection = Input.GetAxis("move_left", "move_right");
+        _movementDirection = movementDirection;
+=======
 	private void HandleMovement(double delta)
 	{
 		Vector2 direction = Input.GetVector("move_left", "move_right", "look_up", "look_down");
 		float movementDirection = Input.GetAxis("move_left", "move_right");
+>>>>>>> 45c8bf9 (make tiles and physics maps)
 
 		if (direction != Vector2.Zero)
 		{
@@ -79,6 +121,30 @@ public partial class FullPlayer : BasePlayer
 			}
 		}
 
+<<<<<<< HEAD
+        // only needed for controller, but doesnt impact keyboard
+        // always move at the same speed, by setting the movement director to 1f 
+        GD.Print(_pushingHitboxCollision.Scale);
+        if (movementDirection > 0)
+        {
+            Sprite.FlipH = false;
+            movementDirection = 1f;
+            if (!_isPushing && _pushingHitbox.Scale.X < 0)
+            {
+                _pushingHitbox.Scale = new Vector2(_pushingHitbox.Scale.X * (-1), _pushingHitbox.Scale.Y);
+            }
+        } else if (movementDirection < 0) {
+            Sprite.FlipH = true;
+            movementDirection = -1f;
+            if (!_isPushing && _pushingHitbox.Scale.X > 0)
+            {
+                _pushingHitbox.Scale = new Vector2(_pushingHitbox.Scale.X * (-1), _pushingHitbox.Scale.Y);
+            }
+        } else
+        {
+            movementDirection = 0f;
+        }
+=======
 		// only needed for controller, but doesnt impact keyboard
 		// always move at the same speed, by setting the movement director to 1f 
 		if (movementDirection > 0)
@@ -92,6 +158,7 @@ public partial class FullPlayer : BasePlayer
 		{
 			movementDirection = 0f;
 		}
+>>>>>>> 45c8bf9 (make tiles and physics maps)
 		
 		if (KnockBackTimer > 0f)
 		{
@@ -119,9 +186,57 @@ public partial class FullPlayer : BasePlayer
 			} 
 		}
 		
+<<<<<<< HEAD
+        if (Input.IsActionJustReleased("jump") && Velocity.Y < 0)
+        {
+            Velocity = new Vector2(Velocity.X, Velocity.Y * JumpCutMultiplier);
+        }
+    }
+
+    private void HandlePush()
+    {
+        if (Input.IsActionPressed("push"))
+        {
+            _isPushing = true;
+            if (_pushable != null)
+            {
+                _pushable.Velocity = new Vector2(_movementDirection * Speed, 0);
+            }
+        } else
+        {
+            _isPushing = false;
+            if (_pushable != null)
+            {
+                _pushable.Velocity = Vector2.Zero;
+            }
+        }
+    }
+    
+    public void OnPushingHitboxAreaEntered(Area2D area)
+    {
+        CharacterBody2D pushable = area.GetParent<CharacterBody2D>();
+        if (pushable != null)
+        {
+            // pushable.ApplyCentralImpulse(new Vector2(_movementDirection * Speed, 0));
+            // pushable.ApplyForce(new Vector2(_movementDirection * Speed, 0));
+            _pushable = pushable;
+        }
+    }
+    
+    public void OnPushingHitboxAreaExited(Area2D area)
+    {
+        CharacterBody2D pushable = area.GetParent<CharacterBody2D>();
+        if (pushable != null)
+        {
+            _pushable.Velocity = Vector2.Zero;
+            _pushable = null;
+        }
+    }
+=======
 		if (Input.IsActionJustReleased("jump") && Velocity.Y < 0)
 		{
 			Velocity = new Vector2(Velocity.X, Velocity.Y * JumpCutMultiplier);
 		}
 	}
+>>>>>>> 45c8bf9 (make tiles and physics maps)
 }
