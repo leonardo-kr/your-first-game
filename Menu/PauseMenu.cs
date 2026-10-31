@@ -20,7 +20,7 @@ public partial class PauseMenu : CanvasLayer
 
     public override void _UnhandledInput(InputEvent @event)
     {
-        if (!@event.IsActionPressed("pause") || GetTree().CurrentScene is MainMenu)
+        if (!@event.IsActionPressed("pause") || GetTree().CurrentScene is MainMenu or Splash)
         {
             return;
         }

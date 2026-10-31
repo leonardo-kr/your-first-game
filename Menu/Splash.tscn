@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://t6wg2io5a6l8"]
+
+[ext_resource type="Script" uid="uid://rnlqrpn8epn6" path="res://Menu/Splash.cs" id="1_splash"]
+[ext_resource type="Script" uid="uid://dxexx4h38x085" path="res://Menu/DecodeLabel.cs" id="2_decode"]
+
+[sub_resource type="SystemFont" id="SystemFont_tsnw2"]
+font_names = PackedStringArray("Menlo")
+
+[node name="Splash" type="Control" unique_id=725122053]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_splash")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1706500126]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=493760092]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.13962634
+
+[node name="Logo" type="VBoxContainer" parent="CenterContainer" unique_id=845673957]
+layout_mode = 2
+
+[node name="Line1" type="Label" parent="CenterContainer/Logo" unique_id=202759675]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_colors/font_outline_color = Color(0, 0.3019608, 0.101960786, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("SystemFont_tsnw2")
+theme_override_font_sizes/font_size = 72
+text = "STUDIO_NAME_LINE1"
+script = ExtResource("2_decode")
+
+[node name="Line2" type="Label" parent="CenterContainer/Logo" unique_id=712196314]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_colors/font_color = Color(0, 1, 0.25490198, 1)
+theme_override_colors/font_outline_color = Color(0, 0.3019608, 0.101960786, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("SystemFont_tsnw2")
+theme_override_font_sizes/font_size = 72
+text = "STUDIO_NAME_LINE2"
+script = ExtResource("2_decode")

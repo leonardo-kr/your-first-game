@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="Limb By Limb"
-run/main_scene="uid://dgtitqda6nxd"
+run/main_scene="uid://t6wg2io5a6l8"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
 config/icon="res://icon.svg"
 
 [autoload]
