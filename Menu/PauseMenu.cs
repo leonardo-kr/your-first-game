@@ -44,6 +44,6 @@ public partial class PauseMenu : CanvasLayer
 	{
 		// Unpause first, or the main menu would load frozen
 		SetPaused(false);
-		GetTree().ChangeSceneToFile("res://Menu/MainMenu.tscn");
+        GetNode<SceneTransition>("/root/SceneTransition").ChangeScene("res://Menu/MainMenu.tscn");
 	}
 }

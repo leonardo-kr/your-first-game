@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PauseMenu="*uid://cjarcs56nv7uu"
+SceneTransition="*uid://dq0hgo32ywyj8"
 
 [display]
 

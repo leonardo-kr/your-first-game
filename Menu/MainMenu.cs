@@ -17,7 +17,7 @@ public partial class MainMenu : Control
 
 	private void OnPlayPressed()
 	{
-		GetTree().ChangeSceneToFile("res://Level/Level1.tscn");
+        GetNode<SceneTransition>("/root/SceneTransition").ChangeScene("res://Level/Level1.tscn");
 	}
 	
 	private void OnQuitPressed()
