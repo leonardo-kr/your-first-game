@@ -15,7 +15,7 @@ public partial class LegsPlayer : BasePlayer
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		Sprite = GetNode<Sprite2D>("Sprite2D");
+		Sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		Collision = GetNode<CollisionShape2D>("CollisionShape2D");
 	}
 
