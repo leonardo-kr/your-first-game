@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://xq3kk8hwdu5m"]
+
+[ext_resource type="PackedScene" uid="uid://bsvatwdtmec3g" path="res://Player/Player.tscn" id="1_1rv4e"]
+[ext_resource type="PackedScene" uid="uid://ceg56df1sx1rm" path="res://Environment/Box.tscn" id="2_ai77n"]
+
+[node name="Level1" type="Node2D" unique_id=833380249]
+
+[node name="Player" parent="." unique_id=1110022530 instance=ExtResource("1_1rv4e")]
+position = Vector2(191, 102)
+
+[node name="Box" parent="." unique_id=172954529 instance=ExtResource("2_ai77n")]
+position = Vector2(42, 429)
+rotation = -0.00040853815
+scale = Vector2(18.57, 1.43)

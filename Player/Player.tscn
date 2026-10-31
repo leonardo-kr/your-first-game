@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bsvatwdtmec3g"]
+
+[ext_resource type="Script" uid="uid://dmsscqb7n1g7a" path="res://Player/HeadPlayer.cs" id="1_q3lat"]
+[ext_resource type="Texture2D" uid="uid://c56wm1knsry57" path="res://Player/lets_go_gambling.png" id="2_q3lat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eip6h"]
+size = Vector2(90, 120)
+
+[node name="Player" type="CharacterBody2D" unique_id=1110022530]
+script = ExtResource("1_q3lat")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245905168]
+shape = SubResource("RectangleShape2D_eip6h")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1658359546]
+scale = Vector2(0.035, 0.035)
+texture = ExtResource("2_q3lat")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1834054364]
+position_smoothing_enabled = true
