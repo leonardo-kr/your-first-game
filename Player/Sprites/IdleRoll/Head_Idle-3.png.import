@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpvwl88ekap5v"
-path="res://.godot/imported/Head_Idle-1.png-a59193e3c05cd279723596bb2ffcc007.ctex"
+uid="uid://dg240qpmmfwti"
+path="res://.godot/imported/Head_Idle-3.png-dd5a6fb3a1a4d5cc9da4aaf0781eca4b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player/Sprites/Idle/Head_Idle-1.png"
-dest_files=["res://.godot/imported/Head_Idle-1.png-a59193e3c05cd279723596bb2ffcc007.ctex"]
+source_file="res://Player/Sprites/IdleRoll/Head_Idle-3.png"
+dest_files=["res://.godot/imported/Head_Idle-3.png-dd5a6fb3a1a4d5cc9da4aaf0781eca4b.ctex"]
 
 [params]
 

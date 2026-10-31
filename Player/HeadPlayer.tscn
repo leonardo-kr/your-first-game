@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://bsvatwdtmec3g"]
 
 [ext_resource type="Script" uid="uid://dmsscqb7n1g7a" path="res://Player/HeadPlayer.cs" id="1_q3lat"]
-[ext_resource type="Texture2D" uid="uid://dpvwl88ekap5v" path="res://Player/Sprites/Idle/Head_Idle-1.png" id="2_jyawu"]
-[ext_resource type="Texture2D" uid="uid://j1501jl8cyob" path="res://Player/Sprites/Idle/Head_Idle-2.png" id="3_uwrla"]
-[ext_resource type="Texture2D" uid="uid://dg240qpmmfwti" path="res://Player/Sprites/Idle/Head_Idle-3.png" id="4_ar2tn"]
+[ext_resource type="Texture2D" uid="uid://dpvwl88ekap5v" path="res://Player/Sprites/IdleRoll/Head_Idle-1.png" id="2_jyawu"]
+[ext_resource type="Texture2D" uid="uid://j1501jl8cyob" path="res://Player/Sprites/IdleRoll/Head_Idle-2.png" id="3_uwrla"]
+[ext_resource type="Texture2D" uid="uid://dg240qpmmfwti" path="res://Player/Sprites/IdleRoll/Head_Idle-3.png" id="4_ar2tn"]
+[ext_resource type="Texture2D" uid="uid://bq0ybf017w04p" path="res://Player/Sprites/Roll/Rolling-1.png" id="5_m56v2"]
+[ext_resource type="Texture2D" uid="uid://bow5nm4pr47m2" path="res://Player/Sprites/Roll/Rolling-2.png" id="6_jiaoa"]
+[ext_resource type="Texture2D" uid="uid://qaoxaljkh5t3" path="res://Player/Sprites/Roll/Rolling-3.png" id="7_p0kvc"]
+[ext_resource type="Texture2D" uid="uid://mfxgw5kvio1l" path="res://Player/Sprites/Roll/Rolling-4.png" id="8_v5s7x"]
+[ext_resource type="Texture2D" uid="uid://4ntt74lfetw0" path="res://Player/Sprites/Roll/Rolling-5.png" id="9_7q1t1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xwj6"]
 radius = 50.849876
@@ -24,9 +29,24 @@ animations = [{
 "name": &"idle",
 "speed": 6.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_m56v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jiaoa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_p0kvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_v5s7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_7q1t1")
+}],
 "loop": 1,
-"name": &"new_animation",
+"name": &"roll",
 "speed": 5.0
 }]
 
