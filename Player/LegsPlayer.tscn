@@ -6,17 +6,29 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eip6h"]
 size = Vector2(62, 98)
 
-[node name="Player" type="CharacterBody2D" unique_id=1110022530]
+[sub_resource type="SpriteFrames" id="SpriteFrames_2merx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8rv72")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player2" type="CharacterBody2D" unique_id=1110022530]
 script = ExtResource("1_8rv72")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245905168]
 position = Vector2(-3, 4)
 shape = SubResource("RectangleShape2D_eip6h")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1658359546]
-position = Vector2(8, 4)
-scale = Vector2(0.035, 0.035)
-texture = ExtResource("2_8rv72")
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1834054364]
 position_smoothing_enabled = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1430012214]
+position = Vector2(8, 4)
+scale = Vector2(0.035, 0.035)
+sprite_frames = SubResource("SpriteFrames_2merx")
+autoplay = "default"
