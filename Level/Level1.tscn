@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://xq3kk8hwdu5m"]
 
-[ext_resource type="PackedScene" uid="uid://bsvatwdtmec3g" path="res://Player/Player.tscn" id="1_1rv4e"]
+[ext_resource type="PackedScene" uid="uid://bsvatwdtmec3g" path="res://Player/HeadPlayer.tscn" id="1_1rv4e"]
 [ext_resource type="PackedScene" uid="uid://ceg56df1sx1rm" path="res://Environment/Box.tscn" id="2_ai77n"]
+[ext_resource type="PackedScene" uid="uid://ce56xdwd2qa2y" path="res://Level/tile_map_layer.tscn" id="3_ai77n"]
 
 [node name="Level1" type="Node2D" unique_id=833380249]
 
@@ -12,3 +13,5 @@ position = Vector2(191, 102)
 position = Vector2(42, 429)
 rotation = -0.00040853815
 scale = Vector2(18.57, 1.43)
+
+[node name="TileMapLayer" parent="." unique_id=1697916272 instance=ExtResource("3_ai77n")]
