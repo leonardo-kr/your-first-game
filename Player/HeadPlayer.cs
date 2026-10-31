@@ -7,7 +7,7 @@ public partial class HeadPlayer : BasePlayer
 	public override void _Ready()
 	{
 		Sprite = GetNode<Sprite2D>("Sprite2D");
-        Collision = GetNode<CollisionShape2D>("CollisionShape2D");
+		Collision = GetNode<CollisionShape2D>("CollisionShape2D");
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -16,7 +16,7 @@ public partial class HeadPlayer : BasePlayer
 		HandleMovement(delta);
 
 		MoveAndSlide();
-    }
+	}
 
 	private void UpdateTimers(double delta)
 	{
