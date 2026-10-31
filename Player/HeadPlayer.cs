@@ -5,6 +5,7 @@ using YourFirstGame.Player;
 public partial class HeadPlayer : BasePlayer
 {
     private HeadState _headState = HeadState.NORMAL;
+    private float _baseScale = 0.03f;
     
 	public override void _Ready()
 	{
@@ -106,21 +107,21 @@ public partial class HeadPlayer : BasePlayer
         }
         else
         {
-            Scale = new Vector2(1.0f, 1.0f);
+            Scale = new Vector2(_baseScale, _baseScale);
             _headState = HeadState.NORMAL;
         }
     }
 
     private void Squish()
     {
-        Scale = new Vector2(1.5f, 0.5f);
+        Scale = new Vector2(_baseScale * 1.5f, _baseScale / 2.0f);
         _headState = HeadState.SQUISHED;
         // load other character model
     }
 
     private void Stretch()
     {
-        Scale = new Vector2(0.5f, 1.5f);
+        Scale = new Vector2(_baseScale / 2.0f, _baseScale * 1.5f);
         _headState = HeadState.STRETCHED;
         Sprite.Play("idle");
         Velocity = Vector2.Zero;
